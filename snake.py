@@ -1,4 +1,7 @@
-from turtle import Turtle, Screen
+"""This module creates and manage behavior of the Snake
+"""
+
+from turtle import Turtle
 
 # constant/global values
 STARTING_POSITIONS = [(0,0), (-20,0), (-40,0)]
@@ -23,11 +26,19 @@ class Snake:
     def create_snake(self):
         """Creating a starting snake"""
         for position in STARTING_POSITIONS:
-            new_snake_part = Turtle("square")
-            new_snake_part.penup()
-            new_snake_part.color("white")   
-            new_snake_part.goto(position)
-            self.snake_parts.append(new_snake_part)
+            self.add_part(position)
+            
+    def add_part(self, position):
+        """This function adds a new part to the snake body"""
+        new_snake_part = Turtle("square")
+        new_snake_part.penup()
+        new_snake_part.color("white")   
+        new_snake_part.goto(position)
+        self.snake_parts.append(new_snake_part)
+
+    def extend(self):
+        """This function attach a new part to the snake."""
+        self.add_part(self.snake_parts[-1].position())
 
     def move(self):
         """ Make sure all snake parts are moving together, following the first segment"""
