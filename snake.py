@@ -9,8 +9,9 @@ LEFT = 180
 RIGHT = 0
 
 
-#creating a Snake class
+
 class Snake:
+    """Creating a Snake class"""
 
     # snake attributes
     def __init__(self):
@@ -20,6 +21,7 @@ class Snake:
 
     # snake methods
     def create_snake(self):
+        """Creating a starting snake"""
         for position in STARTING_POSITIONS:
             new_snake_part = Turtle("square")
             new_snake_part.penup()
@@ -28,7 +30,7 @@ class Snake:
             self.snake_parts.append(new_snake_part)
 
     def move(self):
-        # make sure all snake parts are moving together, following the first segment
+        """ Make sure all snake parts are moving together, following the first segment"""
         for part_num in range(len(self.snake_parts) - 1, 0, -1):
             new_x = self.snake_parts[part_num - 1].xcor()
             new_y = self.snake_parts[part_num - 1].ycor()
